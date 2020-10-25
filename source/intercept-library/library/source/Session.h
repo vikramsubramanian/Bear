@@ -21,8 +21,6 @@
 
 namespace el {
 
-    class Buffer;
-
     /**
      * Represents an intercept session parameter set.
      *

@@ -50,16 +50,16 @@ namespace el {
     { }
 
     Paths::iterator Paths::begin() const {
-        return el::Paths::iterator(path_, true);
+        return el::Paths::iterator(path_, first(path_));
     }
 
     Paths::iterator Paths::end() const {
-        return el::Paths::iterator(path_, false);
+        return el::Paths::iterator(path_, last(path_));
     }
 
-    PathsIterator::PathsIterator(std::string_view paths, bool start)
+    PathsIterator::PathsIterator(std::string_view paths, std::string_view &&current)
             : paths_(paths)
-            , current_(start ? first(paths) : last(paths))
+            , current_(current)
     { }
 
     PathsIterator::reference PathsIterator::operator*() const {

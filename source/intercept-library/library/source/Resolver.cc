@@ -51,7 +51,7 @@ namespace el {
         }
         // check if it's okay to execute.
         if (0 == access(result_, X_OK)) {
-            return rust::Ok(std::string_view(result_));
+            return rust::Ok(std::string_view(result_, el::array::length(result_)));
         }
         // try to set a meaningful error value.
         if (0 == access(result_, F_OK)) {

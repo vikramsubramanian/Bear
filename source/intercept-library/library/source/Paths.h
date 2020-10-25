@@ -48,9 +48,9 @@ namespace el {
         using pointer = value_type const*;
         using reference = value_type const&;
 
-    public:
-        PathsIterator(std::string_view paths, bool start);
+        friend class Paths;
 
+    public:
         reference operator*() const;
 
         PathsIterator operator++(int);
@@ -60,6 +60,8 @@ namespace el {
         bool operator!=(const PathsIterator &other) const;
 
     private:
+        PathsIterator(std::string_view paths, std::string_view &&current);
+
         std::string_view paths_;
         std::string_view current_;
     };
