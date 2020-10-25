@@ -107,7 +107,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_current_directory(testing::Eq(std::string_view(LS_PATH))))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker,execve(SILENT_SESSION.reporter,
@@ -136,7 +136,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_current_directory(testing::Eq(std::string_view(LS_PATH))))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, execve(VERBOSE_SESSION.reporter,
@@ -166,7 +166,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_current_directory(testing::Eq(std::string_view(LS_PATH))))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Err(ENOENT))));
+                .WillOnce(Return(rust::Result<std::string_view , int>(rust::Err(ENOENT))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, execve(_, _, _)).Times(0);
@@ -183,7 +183,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_path(testing::Eq(std::string_view(LS_FILE)), testing::Eq(LS_ENVP)))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, execve(VERBOSE_SESSION.reporter,
@@ -213,7 +213,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_search_path(testing::Eq(std::string_view(LS_FILE)), testing::Eq(SEARCH_PATH)))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, execve(VERBOSE_SESSION.reporter,
@@ -244,7 +244,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_current_directory(testing::Eq(std::string_view(LS_PATH))))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, posix_spawn(&pid, VERBOSE_SESSION.reporter, nullptr, nullptr,
@@ -275,7 +275,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_current_directory(testing::Eq(std::string_view(LS_PATH))))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Err(ENOENT))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Err(ENOENT))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, execve(_, _, _)).Times(0);
@@ -293,7 +293,7 @@ namespace {
         ResolverMock resolver;
         EXPECT_CALL(resolver, from_path(testing::Eq(std::string_view(LS_FILE)), testing::Eq(LS_ENVP)))
                 .Times(1)
-                .WillOnce(Return(rust::Result<const char*, int>(rust::Ok(LS_PATH))));
+                .WillOnce(Return(rust::Result<std::string_view, int>(rust::Ok(std::string_view(LS_PATH)))));
 
         LinkerMock linker;
         EXPECT_CALL(linker, posix_spawn(&pid, VERBOSE_SESSION.reporter, nullptr, nullptr,

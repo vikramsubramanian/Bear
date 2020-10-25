@@ -44,13 +44,13 @@ namespace el {
          * @return resolved executable path as absolute path.
          */
         [[nodiscard]]
-        virtual rust::Result<const char*, int> from_current_directory(std::string_view const &file);
+        virtual rust::Result<std::string_view, int> from_current_directory(std::string_view const &file);
 
         [[nodiscard]]
-        virtual rust::Result<const char*, int> from_path(std::string_view const &file, char *const *envp);
+        virtual rust::Result<std::string_view, int> from_path(std::string_view const &file, char *const *envp);
 
         [[nodiscard]]
-        virtual rust::Result<const char*, int> from_search_path(std::string_view const &file, const char *search_path);
+        virtual rust::Result<std::string_view, int> from_search_path(std::string_view const &file, const char *search_path);
 
         Resolver(Resolver const &) = delete;
         Resolver(Resolver &&) noexcept = delete;

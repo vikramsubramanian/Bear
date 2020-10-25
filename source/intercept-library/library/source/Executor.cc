@@ -55,7 +55,7 @@ namespace {
     // Use this class to allocate buffer and assemble the content of it.
     class CommandBuilder {
     public:
-        constexpr CommandBuilder(const el::Session& session, const char* path, char* const* const argv)
+        constexpr CommandBuilder(const el::Session& session, std::string_view const &path, char* const* const argv)
                 : session(session)
                 , path(path)
                 , argv(argv)
@@ -78,7 +78,7 @@ namespace {
                 *it++ = er::flags::VERBOSE;
             }
             *it++ = er::flags::EXECUTE;
-            *it++ = path;
+            *it++ = path.begin();
             *it++ = er::flags::COMMAND;
             {
                 char* const* const argv_end = el::array::end(argv);
@@ -94,9 +94,9 @@ namespace {
         }
 
     private:
-        const el::Session& session;
-        const char* path;
-        char* const* const argv;
+        const el::Session &session;
+        const std::string_view &path;
+        char *const *const argv;
     };
 }
 

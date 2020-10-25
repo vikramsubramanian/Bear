@@ -26,21 +26,21 @@
 class ResolverMock : public el::Resolver {
 public:
     MOCK_METHOD(
-            (rust::Result<const char*, int>),
+            (rust::Result<std::string_view, int>),
             from_current_directory,
             (std::string_view const &),
             (override)
     );
 
     MOCK_METHOD(
-            (rust::Result<const char*, int>),
+            (rust::Result<std::string_view, int>),
             from_path,
             (std::string_view const &, char *const *),
             (override)
     );
 
     MOCK_METHOD(
-            (rust::Result<const char*, int>),
+            (rust::Result<std::string_view, int>),
             from_search_path,
             (std::string_view const &, const char *),
             (override)

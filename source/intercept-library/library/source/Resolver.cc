@@ -44,15 +44,14 @@ namespace el {
         result_[0] = 0;
     }
 
-    rust::Result<const char*, int> Resolver::from_current_directory(std::string_view const &file) {
+    rust::Result<std::string_view, int> Resolver::from_current_directory(std::string_view const &file) {
         // create absolute path to the given file.
         if (nullptr == realpath(file.begin(), result_)) {
             return rust::Err(ENOENT);
         }
         // check if it's okay to execute.
         if (0 == access(result_, X_OK)) {
-            const char *ptr = result_;
-            return rust::Ok(ptr);
+            return rust::Ok(std::string_view(result_));
         }
         // try to set a meaningful error value.
         if (0 == access(result_, F_OK)) {
@@ -61,7 +60,7 @@ namespace el {
         return rust::Err(ENOENT);
     }
 
-    rust::Result<const char*, int> Resolver::from_path(std::string_view const &file, char* const* envp) {
+    rust::Result<std::string_view, int> Resolver::from_path(std::string_view const &file, char* const* envp) {
         if (contains_dir_separator(file)) {
             // the file contains a dir separator, it is treated as path.
             return from_current_directory(file);
@@ -83,7 +82,7 @@ namespace el {
         }
     }
 
-    rust::Result<const char*, int> Resolver::from_search_path(std::string_view const &file, const char *search_path) {
+    rust::Result<std::string_view, int> Resolver::from_search_path(std::string_view const &file, const char *search_path) {
         if (contains_dir_separator(file)) {
             // the file contains a dir separator, it is treated as path.
             return from_current_directory(file);
