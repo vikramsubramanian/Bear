@@ -19,7 +19,6 @@
 
 #include "ToolCuda.h"
 #include "ToolGcc.h"
-
 #include <regex>
 
 namespace cs::semantic {

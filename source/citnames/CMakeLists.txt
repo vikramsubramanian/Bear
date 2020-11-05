@@ -21,6 +21,7 @@ add_library(citnames_a OBJECT
         source/semantic/Tool.cc
         source/semantic/ToolClang.cc
         source/semantic/ToolCuda.cc
+        source/semantic/ToolLD.cc
         source/semantic/ToolGcc.cc
         source/semantic/ToolWrapper.cc
         source/semantic/ToolExtendingWrapper.cc

@@ -21,6 +21,7 @@
 #include "ToolGcc.h"
 #include "ToolClang.h"
 #include "ToolCuda.h"
+#include "ToolLD.h"
 #include "ToolWrapper.h"
 #include "ToolExtendingWrapper.h"
 
@@ -165,6 +166,7 @@ namespace cs::semantic {
                 std::make_shared<ToolClang>(),
                 std::make_shared<ToolWrapper>(),
                 std::make_shared<ToolCuda>(),
+                std::make_shared<ToolLD>(),
         };
         for (auto && compiler : cfg.compilers_to_recognize) {
             tools.emplace_back(std::make_shared<ToolExtendingWrapper>(std::move(compiler)));

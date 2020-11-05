@@ -24,7 +24,6 @@
 #include <regex>
 
 namespace cs::semantic {
-
     const char* ToolWrapper::name() const {
         return "LD"; // UNSURE: Confirm this is just for debugging/logging
     }
