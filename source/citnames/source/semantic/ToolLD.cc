@@ -18,24 +18,26 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ToolWrapper.h"
 #include "ToolLD.h"
-
+// #include "ToolWrapper.h"
+#include "ToolGcc.h"
 #include <regex>
 
 namespace cs::semantic {
-    const char* ToolWrapper::name() const {
+    const char* ToolLD::name() const {
         return "LD"; // UNSURE: Confirm this is just for debugging/logging
     }
 
-    bool ToolWrapper::recognize(const fs::path& program) const {
+    bool ToolLD::recognize(const fs::path& program) const {
         static const auto pattern = std::regex(R"(^(LD)$)");
 
         std::cmatch m;
         return std::regex_match(program.filename().c_str(), m, pattern);
     }
 
-    rust::Result<SemanticPtrs> ToolWrapper::compilations(const report::Command &command) const {
-        return ToolLD().compilations(command);
+    rust::Result<SemanticPtrs> ToolLD::compilations(const report::Command &command) const {
+        return ToolGcc().compilations(command);
     }
 }
+
+
