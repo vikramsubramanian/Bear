@@ -29,7 +29,7 @@ namespace cs::semantic {
     }
 
     bool ToolLD::recognize(const fs::path& program) const {
-        static const auto pattern = std::regex(R"(^(LD)$)");
+        static const auto pattern = std::regex(R"(^\/usr\/bin\/ld$)");
 
         std::cmatch m;
         return std::regex_match(program.filename().c_str(), m, pattern);
@@ -39,5 +39,3 @@ namespace cs::semantic {
         return ToolGcc().compilations(command);
     }
 }
-
-
