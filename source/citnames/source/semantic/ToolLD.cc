@@ -29,8 +29,9 @@ namespace cs::semantic {
     }
 
     bool ToolLD::recognize(const fs::path& program) const {
-        static const auto pattern = std::regex(R"(^\/usr\/bin\/ld$)");
-
+        //R"(^ld$)"
+        static const auto pattern = std::regex(R"(^([^-]*-)*clang(|\+\+)(-?\d+(\.\d+){0,2})?$)");
+        std::cout << "Debug Flag. Vikram was here" << std::endl;
         std::cmatch m;
         return std::regex_match(program.filename().c_str(), m, pattern);
     }
