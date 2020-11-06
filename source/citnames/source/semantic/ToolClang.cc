@@ -25,7 +25,7 @@
 namespace cs::semantic {
 
     const char* ToolClang::name() const {
-        return "Clang";
+        return "Clangoo";
     }
 
     bool ToolClang::recognize(const fs::path& program) const {

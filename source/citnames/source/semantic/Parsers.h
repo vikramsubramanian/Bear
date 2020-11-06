@@ -192,7 +192,9 @@ namespace cs::semantic {
                 // D
                 ".d", ".di", ".dd",
                 // Ada
-                ".ads", ".abd"
+                ".ads", ".abd",
+                //ld
+                "ld",  ".bfd", ".so.2", ".2", ".so"
         };
 
         [[nodiscard]]

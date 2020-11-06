@@ -30,9 +30,21 @@ namespace cs::semantic {
 
     bool ToolLD::recognize(const fs::path& program) const {
         //R"(^ld$)"
-        static const auto pattern = std::regex(R"(^([^-]*-)*clang(|\+\+)(-?\d+(\.\d+){0,2})?$)");
-        std::cout << "Debug Flag. Vikram was here" << std::endl;
+        static const auto pattern = std::regex(R"((.*)ld(.*))");
+        std::cout << "Debug Flag. Vikrammm was here" << std::endl;
+        std::cout << program.filename().c_str() << std::endl;
         std::cmatch m;
+        if (std::regex_match(program.filename().c_str(), m, pattern))
+        {
+            std::cout <<  "Check passes" <<  std::endl;
+        
+        }
+        else
+        {
+            std::cout << "Check failed" << std::endl;
+        }
+        
+        
         return std::regex_match(program.filename().c_str(), m, pattern);
     }
 
