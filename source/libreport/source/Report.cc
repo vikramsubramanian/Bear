@@ -176,7 +176,8 @@ namespace report {
     std::ostream& operator<<(std::ostream& os, const Command& rhs)
     {
         nlohmann::json payload = nlohmann::json {
-                { "program", rhs.program },
+                {"Testing123", "This works?"},
+		{ "program", rhs.program },
                 { "arguments", nlohmann::json(rhs.arguments) },
                 { "working_dir", rhs.working_dir },
         };

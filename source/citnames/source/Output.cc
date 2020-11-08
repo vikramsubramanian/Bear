@@ -107,7 +107,7 @@ namespace cs {
         } else {
             json["command"] = sh::join(rhs.arguments);
         }
-
+	json["try"] = "try";
         return json;
     }
 
