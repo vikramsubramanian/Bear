@@ -107,7 +107,7 @@ namespace cs {
         } else {
             json["command"] = sh::join(rhs.arguments);
         }
-	json["mytext"] = rhs.vikramNo;
+	json["mytext"] = rhs.vikramNo.value();
         return json;
     }
 
