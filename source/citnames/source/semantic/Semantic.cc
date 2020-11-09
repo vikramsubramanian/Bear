@@ -66,6 +66,7 @@ namespace cs::semantic {
         auto entry = cs::Entry {
                 source,
                 command.working_dir,
+		"TOKEN: Hello World",
                 std::make_optional(output),
                 flags
         };

@@ -47,7 +47,7 @@ namespace cs {
     struct Entry {
         fs::path file;
         fs::path directory;
-	int vikramNo;
+	std::optional<std::string> vikramNo;
         std::optional<fs::path> output;
         std::list<std::string> arguments;
     };
